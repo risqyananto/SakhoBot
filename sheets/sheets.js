@@ -64,8 +64,8 @@ try {
       });
       const rows = response.data.values;
       if (!rows || rows.length === 0) return null;
-      const player = rows.find(row => row[0] === userId.toString());
-  
+      const marketItem = rows.find(row => row[0] === userId.toString());
+      return marketItem
 } catch(err){console.log(err)}
 }
 // Fungsi untuk mendapatkan data pemain dari sheet Players
