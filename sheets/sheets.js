@@ -55,7 +55,19 @@ async function getAllPlayers() {
     return [];
   }
 }
-
+async function getMarketData() {
+try {
+      const sheets = await getSheet();
+      const response = await sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: `Market!A2:E`, // A2 sampai M (13 kolom sesuai struktur)
+      });
+      const rows = response.data.values;
+      if (!rows || rows.length === 0) return null;
+      const player = rows.find(row => row[0] === userId.toString());
+  
+} catch(err){console.log(err)}
+}
 // Fungsi untuk mendapatkan data pemain dari sheet Players
 async function getPlayerData(userId) {
     try {
